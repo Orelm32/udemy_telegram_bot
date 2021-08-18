@@ -48,6 +48,8 @@ def add_reminder_handler(update: Update , context:CallbackContext):
     ans = update.message.reply_text("Please enter a message of the reminder: ")
     if ans == 'אימון':
         return ENTER_MESSAGE
+    else:
+        return ENTER_MESSAGE
 
 
 def enter_message_handler(update: Update , context:CallbackContext):
