@@ -38,7 +38,8 @@ def start_handler(update, context):
 
 def add_reminder_button():
     keyboard = [
-        [KeyboardButton(ADD_REMINDER_TEXT)],
+        [KeyboardButton(ADD_REMINDER_TEXT),
+         KeyboardButton('TEST')],
     ]
     return ReplyKeyboardMarkup(keyboard)
 
