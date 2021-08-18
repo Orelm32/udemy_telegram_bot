@@ -9,11 +9,11 @@ import datetime
 import logging
 import sys
 
-ENTER_TIME_AGAIN = 'Please use this format: D/M/Y H:M'
+
 ADD_REMINDER_TEXT = 'Add a Reminder'
 INTERVAL = 30
 MODE = os.getenv("MODE")
-set = 'תיאום אימון'
+
 TOKEN = os.getenv('TOKEN')
 ENTER_MESSAGE, ENTER_TIME = range(2)
 datasource = DataSource(os.environ.get("DATABASE_URL"))
@@ -39,10 +39,6 @@ def start_handler(update, context):
 def add_reminder_button():
     keyboard = [
         [KeyboardButton(ADD_REMINDER_TEXT)],
-        [KeyboardButton(set)],
-        [KeyboardButton('מצב מפעיל')],
-        [KeyboardButton('הצגת הלוז')],
-        [KeyboardButton('תיאום אימון')],
     ]
     return ReplyKeyboardMarkup(keyboard)
 
@@ -90,7 +86,7 @@ if __name__ == '__main__':
         states={
             ENTER_MESSAGE: [MessageHandler(Filters.all, enter_message_handler)],
             ENTER_TIME: [MessageHandler(Filters.all, enter_time_handler)],
-            ENTER_TIME_AGAIN: [MessageHandler(Filters.all, enter_format)],
+
         },
         fallbacks=[]
     )
