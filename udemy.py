@@ -39,17 +39,15 @@ def start_handler(update, context):
 def add_reminder_button():
     keyboard = [
         [KeyboardButton(ADD_REMINDER_TEXT),
-         KeyboardButton('תיאום אימון')],
+         KeyboardButton('תיאום אימון'),
+         KeyboardButton('הצגת הלו"ז')],
     ]
     return ReplyKeyboardMarkup(keyboard)
 
 
 def add_reminder_handler(update: Update , context:CallbackContext):
-    ans = update.message.reply_text("Please enter a message of the reminder: ")
-    if ans == 'אימון':
-        return ENTER_MESSAGE
-    else:
-        return ENTER_MESSAGE
+    update.message.reply_text("Please enter a message of the reminder: ")
+    return ENTER_MESSAGE
 
 
 def enter_message_handler(update: Update , context:CallbackContext):
