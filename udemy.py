@@ -38,9 +38,9 @@ def start_handler(update, context):
 
 def add_reminder_button():
     keyboard = [
-        [KeyboardButton(ADD_REMINDER_TEXT),
-         KeyboardButton('תיאום אימון'),
-         KeyboardButton('הצגת הלו"ז')],
+        [KeyboardButton('תיאום אימון'),
+         KeyboardButton('מידע למתאמן'),
+         KeyboardButton('מצב מפעיל')],
     ]
     return ReplyKeyboardMarkup(keyboard)
 
