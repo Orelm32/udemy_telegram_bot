@@ -34,12 +34,12 @@ else:
     sys.exit(1)
 # /start command
 def start_handler(update, context):
-    update.message.reply_text('Hello, Creator', reply_markup=add_reminder_button())
+    update.message.reply_text('היי, כאן הבוט של בגירה מערכות. \n מה תרצו לעשות היום?', reply_markup=add_reminder_button())
 
 def add_reminder_button():
     keyboard = [
         [KeyboardButton(ADD_REMINDER_TEXT),
-         KeyboardButton('TEST')],
+         KeyboardButton('תיאום אימון')],
     ]
     return ReplyKeyboardMarkup(keyboard)
 
@@ -62,8 +62,6 @@ def enter_time_handler(update: Update , context:CallbackContext):
     update.message.reply_text('Your reminder : ' + message_data.__repr__())
     return ConversationHandler.END
 
-def enter_format(update:Update, context:CallbackContext):
-    return ENTER_TIME_AGAIN
 
 def start_check_reminders_task():
     thread = threading.Thread(target=check_reminders, args=())
