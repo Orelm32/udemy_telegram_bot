@@ -44,7 +44,7 @@ def add_reminder_button():
          KeyboardButton('מצב מפעיל')],
         [KeyboardButton(BACK)],
     ]
-    
+
     return ReplyKeyboardMarkup(keyboard)
 
 
@@ -67,6 +67,8 @@ def enter_time_handler(update: Update , context:CallbackContext):
             time = datetime.datetime.strptime(update.message.text, '%d/%m/%Y %H:%M')
         except ValueError:
             update.message.reply_text('אנא השתמש בפורמט הבא: HH:MM dd/mm/yyyy')
+        if message_text == BACK:
+            False
         message_data = datasource.create_reminder(update.message.chat_id, message_text, time)
         update.message.reply_text('\nהאימון נקבע ל: ' + message_data.__repr__())
         return ConversationHandler.END
