@@ -84,7 +84,7 @@ if __name__ == '__main__':
     updater.dispatcher.add_handler(CommandHandler('start', start_handler))
     conv_handler = ConversationHandler(
         entry_points=[MessageHandler(Filters.regex(ADD_REMINDER_TEXT), add_reminder_handler)
-        MessageHandler(Filters.regex(TEST),add_reminder_handler())],
+        MessageHandler(Filters.regex(TEST),add_reminder_handler)],
         states={
             ENTER_MESSAGE: [MessageHandler(Filters.all, enter_message_handler)],
             ENTER_TIME: [MessageHandler(Filters.all, enter_time_handler)],
