@@ -9,7 +9,7 @@ class ReminderData:
         self.time = row[3]
         self.fired = row[4]
     def __repr__(self):
-        return 'Message: {0} ;\nAt time: {1}'.format(self.message, self.time.strftime('%d/%m/%Y %H:%M'))
+        return 'כוח מתאמן: {0} ;\nתאריך + שעה: {1}'.format(self.message, self.time.strftime('%d/%m/%Y %H:%M'))
 
 
     def should_be_fired(self):
