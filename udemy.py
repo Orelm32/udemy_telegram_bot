@@ -11,7 +11,7 @@ import sys
 
 TEST = 'מידע למתאמן'
 ADD_REMINDER_TEXT = 'תיאום אימון'
-INTERVAL = 30
+INTERVAL = 10
 MODE = os.getenv("MODE")
 BACK = 'חזור'
 
@@ -42,7 +42,9 @@ def add_reminder_button():
         [KeyboardButton(ADD_REMINDER_TEXT),
          KeyboardButton(TEST),
          KeyboardButton('מצב מפעיל')],
+        [KeyboardButton(BACK)],
     ]
+    
     return ReplyKeyboardMarkup(keyboard)
 
 
