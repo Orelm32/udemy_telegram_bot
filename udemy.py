@@ -13,6 +13,7 @@ TEST = 'מידע למתאמן'
 ADD_REMINDER_TEXT = 'תיאום אימון'
 INTERVAL = 30
 MODE = os.getenv("MODE")
+BACK = 'חזור'
 
 TOKEN = os.getenv('TOKEN')
 ENTER_MESSAGE, ENTER_TIME = range(2)
@@ -63,7 +64,7 @@ def enter_time_handler(update: Update , context:CallbackContext):
             message_text = context.user_data['message_text']
             time = datetime.datetime.strptime(update.message.text, '%d/%m/%Y %H:%M')
         except ValueError:
-            update.message.reply_text('אנא השתמש בפורמט הבא: /dd/mm/yyyy')
+            update.message.reply_text('אנא השתמש בפורמט הבא: HH:MM dd/mm/yyyy')
         message_data = datasource.create_reminder(update.message.chat_id, message_text, time)
         update.message.reply_text('\nהאימון נקבע ל: ' + message_data.__repr__())
         return ConversationHandler.END
@@ -83,13 +84,19 @@ def check_reminders():
                 updater.bot.send_message(reminder_data.chat_id, reminder_data.message)
         time.sleep(INTERVAL)
 
+def go_back():
+    start_handler()
+
+
+
 # Runs the bot
 if __name__ == '__main__':
     updater = Updater(TOKEN, use_context=True)
     updater.dispatcher.add_handler(CommandHandler('start', start_handler))
     conv_handler = ConversationHandler(
         entry_points=[MessageHandler(Filters.regex(ADD_REMINDER_TEXT), add_reminder_handler),
-        MessageHandler(Filters.regex(TEST),add_reminder_handler)],
+        MessageHandler(Filters.regex(TEST), add_reminder_handler),
+        MessageHandler(Filters.regex(BACK), go_back)],
         states={
             ENTER_MESSAGE: [MessageHandler(Filters.all, enter_message_handler)],
             ENTER_TIME: [MessageHandler(Filters.all, enter_time_handler)],
