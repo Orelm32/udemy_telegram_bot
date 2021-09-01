@@ -46,13 +46,13 @@ def add_reminder_button():
 
 
 def add_reminder_handler(update: Update , context:CallbackContext):
-    update.message.reply_text("Please enter a message of the reminder: ")
+    update.message.reply_text("אנא רשום את שם הפלוגה\הכוח המתאמן: ")
     return ENTER_MESSAGE
 
 
 def enter_message_handler(update: Update , context:CallbackContext):
 
-    update.message.reply_text("Please enter a time the bot should remind: ")
+    update.message.reply_text("למתי תרצה לקבוע את האימון? ")
     context.user_data['message_text'] = update.message.text
     return ENTER_TIME
 
@@ -61,7 +61,7 @@ def enter_time_handler(update: Update , context:CallbackContext):
     message_text = context.user_data['message_text']
     time = datetime.datetime.strptime(update.message.text, '%d/%m/%Y %H:%M')
     message_data = datasource.create_reminder(update.message.chat_id, message_text, time)
-    update.message.reply_text('Your reminder : ' + message_data.__repr__())
+    update.message.reply_text('\nהאימון נקבע ל: ' + message_data.__repr__())
     return ConversationHandler.END
 
 
