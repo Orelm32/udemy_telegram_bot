@@ -68,7 +68,7 @@ def enter_time_handler(update: Update , context:CallbackContext):
         except ValueError:
             update.message.reply_text('אנא השתמש בפורמט הבא: HH:MM dd/mm/yyyy')
         message_data = datasource.create_reminder(update.message.chat_id, message_text, time)
-        update.message.reply_text('\nהאימון נקבע ל: ' + message_data.__repr__())
+        update.message.reply_text('האימון הנקבע:\n ' + message_data.__repr__())
         return ConversationHandler.END
         False
 
