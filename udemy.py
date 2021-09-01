@@ -10,7 +10,7 @@ import logging
 import sys
 
 
-ADD_REMINDER_TEXT = 'Add a Reminder'
+ADD_REMINDER_TEXT = 'תיאום אימון'
 INTERVAL = 30
 MODE = os.getenv("MODE")
 
@@ -38,7 +38,7 @@ def start_handler(update, context):
 
 def add_reminder_button():
     keyboard = [
-        [KeyboardButton('תיאום אימון'),
+        [KeyboardButton('ADD_REMINDER_TEXT'),
          KeyboardButton('מידע למתאמן'),
          KeyboardButton('מצב מפעיל')],
     ]
